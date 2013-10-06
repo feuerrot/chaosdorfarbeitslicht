@@ -11,7 +11,7 @@ Haha, nein. SoftwarePWM in schlecht auf PortB braucht kein Layout, das
 hängt eh auf einem Steckbrett rum, das mit Malerkrepp mit dem Netzteil
 verbunden ist.
 
-## Bussystem?
+## BUS-Anbindung?
 SI2C, wahrscheinlich. Damit habe ich natürlich nichts zu tun.
 
 ## Dokumentation?
