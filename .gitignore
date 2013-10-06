@@ -7,3 +7,8 @@ main.eep.hex
 main.bin
 *.o
 main.s
+.dep
+main.eep
+main.elf
+main.lss
+main.sym
