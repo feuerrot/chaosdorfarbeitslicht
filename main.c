@@ -3,7 +3,7 @@
 #include <avr/interrupt.h>
 
 const uint8_t pwm[16] = { 0, 2, 3, 4, 6, 8, 11, 16, 23, 32, 45, 64, 90, 128, 181, 255 };
-volatile uint8_t pwmmode[8] = { 0, 2, 4, 6, 8, 11, 14, 16 };
+volatile uint8_t pwmmode[8] = { 15, 15, 15, 15, 15, 15, 15, 15 };
 volatile uint8_t pwmcounter;
 
 ISR(TIMER0_OVF_vect){
@@ -11,7 +11,6 @@ ISR(TIMER0_OVF_vect){
 
 	if (pwmcounter == 0){
 		PORTB = 0xff;
-		pwmmode[0] = (pwmmode[0] + 1) & 0x1111;
 	}
 
 	if (pwmcounter > pwm[pwmmode[0]]) PORTB &= ~(1<<PB0);
