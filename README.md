@@ -10,3 +10,7 @@ verbunden ist.
 
 ## Bussystem?
 SI2C, wahrscheinlich. Damit habe ich natürlich nichts zu tun.
+
+## Dokumentation?
+Und auch hier ist wieder der Code selbstdokumentierend. Im Chaosdorfwiki
+könnte es dann auch irgendwann mal eine Seite geben, je nach Zeit und Lust.
