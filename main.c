@@ -16,7 +16,7 @@ uint8_t eepromupdate(void){
 void init(void){
 	DDRB = 0xff;
 	DDRD = (1<<PD6);
-	PORTB = 0xff;
+	PORTB = 0x00;
 	PORTD &= ~(1<<PD6);
 	globpwm = eepromupdate();
 }
