@@ -1,43 +1,39 @@
 // coding: utf-8
 #include <avr/io.h>
-#include <avr/interrupt.h>
+#include <avr/eeprom.h>
 
 const uint8_t pwm[16] = { 0, 2, 3, 4, 6, 8, 11, 16, 23, 32, 45, 64, 90, 128, 181, 255 };
-volatile uint8_t pwmmode[8] = { 15, 15, 15, 15, 15, 15, 15, 15 };
-volatile uint8_t pwmcounter;
+uint8_t pwmcounter, globpwm;
+uint8_t globpwm_eeprom EEMEM = 0;
 
-ISR(TIMER0_OVF_vect){
-	pwmcounter++;
 
-	if (pwmcounter == 0){
-		PORTB = 0xff;
-	}
-
-	if (pwmcounter > pwm[pwmmode[0]]) PORTB &= ~(1<<PB0);
-	if (pwmcounter > pwm[pwmmode[1]]) PORTB &= ~(1<<PB1);
-	if (pwmcounter > pwm[pwmmode[2]]) PORTB &= ~(1<<PB2);
-	if (pwmcounter > pwm[pwmmode[3]]) PORTB &= ~(1<<PB3);
-	if (pwmcounter > pwm[pwmmode[4]]) PORTB &= ~(1<<PB4);
-	if (pwmcounter > pwm[pwmmode[5]]) PORTB &= ~(1<<PB5);
-	if (pwmcounter > pwm[pwmmode[6]]) PORTB &= ~(1<<PB6);
-	if (pwmcounter > pwm[pwmmode[7]]) PORTB &= ~(1<<PB7);
+uint8_t eepromupdate(void){
+	uint8_t tmp = eeprom_read_byte(&globpwm_eeprom);
+	eeprom_write_byte(&globpwm_eeprom, ((tmp + 1) & 0x0f));
+	return tmp;
 }
-	
 
 void init(void){
-	TCCR0B |= (1<<CS00);
-	TIMSK  |= (1<<TOIE0);
 	DDRB = 0xff;
 	DDRD = (1<<PD6);
 	PORTB = 0xff;
 	PORTD &= ~(1<<PD6);
-	sei();
+	globpwm = eepromupdate();
 }
 
 int main(void){
 	init();
 
 	while(1){
+		if (pwmcounter == 0 && globpwm > 0){
+			PORTB = 0xff;
+		}
+		
+		pwmcounter++;
+		
+		for (int i=0; i<8; i++){
+			if (pwmcounter >= pwm[globpwm]) PORTB &= ~(1<<i);
+		}
 	}
 	return 0;
 }
