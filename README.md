@@ -12,6 +12,11 @@ Powercycle als Userinterface. Total toll mit EEPROM, der beim Start zum
 nächsten Status übergeht und den dann speichert. Damit hat das Licht
 weniger Buttons als ein iPhone!
 
+Oder auch:
+* Knopf drücken => Reset
+* Reset => (Leuchtstufe+1) & 0x0f
+* Maximal 15 Mal drücken => Aus
+
 ## Layout?
 Haha, nein. SoftwarePWM in schlecht auf PortB braucht kein Layout, das
 hängt eh auf einem Steckbrett rum, das mit Malerkrepp mit dem Netzteil
