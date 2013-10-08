@@ -35,7 +35,7 @@ int main(void){
 			if (pwmcounter >= pwm[globpwm]) PORTB &= ~(1<<i);
 		}
 #else
-		if (pwmcounter >= pwm[globpwm]) PORTB = 0x00;
+		if (pwmcounter > pwm[globpwm]) PORTB = 0x00;
 #endif
 	}
 	return 0;
