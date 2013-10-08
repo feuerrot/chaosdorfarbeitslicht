@@ -30,10 +30,13 @@ int main(void){
 		}
 		
 		pwmcounter++;
-		
+#if 0		
 		for (int i=0; i<8; i++){
 			if (pwmcounter >= pwm[globpwm]) PORTB &= ~(1<<i);
 		}
+#else
+		if (pwmcounter >= pwm[globpwm]) PORTB = 0x00;
+#endif
 	}
 	return 0;
 }
