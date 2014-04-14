@@ -1,11 +1,7 @@
 # Chaosdorfarbeitslicht?
-Ein weiteres, demnächst idealerweise steuerbares Licht im Chaosdorf. Hängt
-ja auch nur seit Ewigkeiten unter dem Regalbrett bei all den Monitoren und
-brauchte auch nur noch einen weiteren μC.
-
-Das ganze hat natürlich nichts mit einem seriösen Arbeitslicht zu tun, aber
-Chaosdorfpostmonitorbeleuchtungsstreifensteuerung hört sich auch nicht
-besser an.
+Am Regal über den Monitoren hängt im Chaosdorf ein LED-Streifen, der an 7 Stellen aufgetrennt ist und an einem ATTiny2313 hängt.
+Die Steuerung erfolgt inzwischen über die Dorfmap, womit die unten stehenden Informationen grausam veraltet sind.
+Dieses Repository dient damit nur zu Dokumentationszwecken.
 
 ## Bedienung?
 Powercycle als Userinterface. Total toll mit EEPROM, der beim Start zum
